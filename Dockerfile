@@ -1,5 +1,5 @@
 # Use the Postman/Newman image as the base image
-FROM node:18
+FROM node:18-alpine
 
 # Create a directory for Newman collections
 RUN mkdir /etc/postman
@@ -11,7 +11,7 @@ COPY postman-collection-dir/*.json /etc/postman/
 RUN npm i -g newman -y
 
 # Create a script to run all collections in the directory
-RUN echo '#!/bin/bash' >> /etc/run-collections.sh && \
+RUN echo '#!/bin/sh' >> /etc/run-collections.sh && \
     echo 'for file in /etc/postman/*.json; do' >> /etc/run-collections.sh && \
     echo '  newman run "$file";' >> /etc/run-collections.sh && \
     echo 'done' >> /etc/run-collections.sh && \
