@@ -103,12 +103,33 @@
         }
       ],
       "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{apikey}}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "API-Key",
+              "type": "string"
+            }
+          ]
+        },
         "method": "GET",
-        "header": [],
+        "header": [
+          {
+            "key": "API-Key",
+            "value": "{{apikey}}}",
+            "type": "text",
+            "disabled": true
+          }
+        ],
         "url": {
-          "raw": "http://book-listing-api-3192360657:8080/books",
-          "host": ["book-listing-api-3192360657"],
-          "port": "8080",
+          "raw": "{{url}}/books",
+          "host": ["{{url}}"],
           "path": ["books"]
         }
       },
@@ -176,6 +197,21 @@
         }
       ],
       "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{apikey}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "API-Key",
+              "type": "string"
+            }
+          ]
+        },
         "method": "POST",
         "header": [],
         "body": {
@@ -188,9 +224,8 @@
           }
         },
         "url": {
-          "raw": "http://book-listing-api-3192360657:8080/books/add",
-          "host": ["book-listing-api-3192360657"],
-          "port": "8080",
+          "raw": "{{url}}/books/add",
+          "host": ["{{url}}"],
           "path": ["books", "add"]
         }
       },
@@ -259,6 +294,21 @@
         }
       ],
       "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{apikey}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "API-Key",
+              "type": "string"
+            }
+          ]
+        },
         "method": "PUT",
         "header": [],
         "body": {
@@ -271,9 +321,8 @@
           }
         },
         "url": {
-          "raw": "http://book-listing-api-3192360657:8080/books/update",
-          "host": ["book-listing-api-3192360657"],
-          "port": "8080",
+          "raw": "{{url}}/books/update",
+          "host": ["{{url}}"],
           "path": ["books", "update"]
         }
       },
@@ -295,12 +344,26 @@
         }
       ],
       "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{apikey}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "API-Key",
+              "type": "string"
+            }
+          ]
+        },
         "method": "DELETE",
         "header": [],
         "url": {
-          "raw": "http://book-listing-api-3192360657:8080/books/delete?id=2",
-          "host": ["book-listing-api-3192360657"],
-          "port": "8080",
+          "raw": "{{url}}/books/delete?id=2",
+          "host": ["{{url}}"],
           "path": ["books", "delete"],
           "query": [
             {
@@ -311,6 +374,37 @@
         }
       },
       "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "url",
+      "value": "https://b3127d1c-180f-4696-9aca-90bc5224d4d8-dev.e1-us-east-azure.choreoapis.dev/kkpj/book-listing-api/book-listing-5c6/v1.0"
+    },
+    {
+      "key": "port",
+      "value": "8080"
+    },
+    {
+      "key": "apikey",
+      "value": "eyJraWQiOiJnYXRld2F5X2NlcnRpZmljYXRlX2FsaWFzIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiI2OTA1Y2VhYS02MDRhLTQyZDUtOTMyOC1mMjliZDUzYzk4MWFAY2FyYm9uLnN1cGVyIiwiaXNzIjoiaHR0cHM6XC9cL3N0cy5jaG9yZW8uZGV2OjQ0M1wvb2F1dGgyXC90b2tlbiIsImtleXR5cGUiOiJQUk9EVUNUSU9OIiwic3Vic2NyaWJlZEFQSXMiOlt7InN1YnNjcmliZXJUZW5hbnREb21haW4iOm51bGwsIm5hbWUiOiJCb29rIExpc3RpbmcgQVBJIC0gQm9vayBMaXN0aW5nIiwiY29udGV4dCI6IlwvYjMxMjdkMWMtMTgwZi00Njk2LTlhY2EtOTBiYzUyMjRkNGQ4XC9ra3BqXC9ib29rLWxpc3RpbmctYXBpXC9ib29rLWxpc3RpbmctNWM2XC92MS4wIiwicHVibGlzaGVyIjoiY2hvcmVvX3Byb2RfYXBpbV9hZG1pbiIsInZlcnNpb24iOiJ2MS4wIiwic3Vic2NyaXB0aW9uVGllciI6bnVsbH1dLCJleHAiOjE2OTYyNDcxNjksInRva2VuX3R5cGUiOiJJbnRlcm5hbEtleSIsImlhdCI6MTY5NjI0NjU2OSwianRpIjoiMjE5MzY2YjMtZTZkNi00NmMyLWJkZDEtOTZiZGUwMzJjOTczIn0.C7HUR0I9CD3Vlcwc7fcAWwkpE02lqgn_iBtlVXkeuw3MSf9cQe0ug8TNpd1tFk4YmqHS-Mp3rJrqqb6gbaW0YSEx_Ku1zx9nahMANBzNS16fsVFj-lgluoRnDw-wky7JO0tWnT0MQGFTInIn6uXm1vZhi4AmDt85BP2WKwHpj9-YhbDWprRF7dSP_f3AG2gIk53L6ZkR2g9nhQn4GITau9juymviQR5xJVIKEyq7yguNe_Yz5ZismfE4Nk7Sc3qXfmMNFnSofhcBRkr4lCj0wWXkMV7kj5xzvWkfUi-ptL7JHoPsELTlQFeD9fZdBzzOBLJgbARyVHrkyfYoZL7gpGCUbyot2NNmjx2D3E042_kNEwWQN67W6D5LWf8oAGIa5bBX-8TaWa5iq_ImeNSCzla3y8HiV6nFtQyka1nou-LCU3-RkLxa0bKRUmYj3PyI6Fw6mNpe4GxwvkXeQPWStEjoKRg8sS_H6yizVs1uzuuJg1Iz8vOQdTfcxOFxIfWHy8fk5XugnPporxTvoOw0p-eH5tb79GJR2icmfGYkzQmpAGiqK8Yd-6uCzQG2uHOvpgavDyn8U5oXkVMBKSAcavwiwPBjqhwWGfOnditYNOtvV3fXP5ZAPs89As4WfoAjVIsq4FmzNVyD7Zwd9gcPe71iv77yvtkweVk7C_40oSI",
+      "type": "string"
     }
   ]
 }
