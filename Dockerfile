@@ -29,5 +29,5 @@ RUN adduser \
 USER 10014
 
 # Run the script when the container starts
-CMD ["/bin/bash", "-c", "sleep 60; /etc/run-collections.sh"]
+CMD ["/etc/run-collections.sh"]
 
